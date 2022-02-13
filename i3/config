@@ -1,0 +1,182 @@
+# i3 config file (v4)
+# LVala
+
+########## GENERAL ##########
+
+font pango: JetBrains Mono 8
+set $mod Mod4
+floating_modifier $mod
+
+########## KEY BINDINGS ##########
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# kill focused window
+bindsym $mod+q kill
+
+# run rofi
+bindsym $mod+d exec "rofi -modi drun,run -show drun"
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+b split h 
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# lock the screen with i3-lockn
+bindsym $mod+Shift+x exec "i3lock --c 1d2021"
+
+# take screenshot with flameshot
+bindsym $mod+Shift+s exec "flameshot gui"
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+########## WORKSPACES ##########
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:gen"
+set $ws2 "2:web"
+set $ws3 "3:dev"
+set $ws4 "4:msc"
+set $ws5 "5:mus"
+set $ws6 "6:com"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+
+# assign workspaces to monitors
+workspace $ws1 output DP-0
+workspace $ws2 output DP-0
+workspace $ws3 output DP-0
+workspace $ws4 output DP-0
+workspace $ws5 output DP-0
+workspace $ws6 output HDMI-0
+
+# assign some application to workspaces
+assign [class="Spotify"] number $ws5
+assign [class="discord"] number $ws6
+
+########## WINDOW APPEARANCE ##########
+
+# window borders and gaps
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 8
+
+# colors
+#                 i3wm        Xresources       FALLBACK
+set_from_resource $bg_hard    background_hard  #000000
+set_from_resource $bg_soft    background_soft  #000000
+set_from_resource $black      normal_black     #000000
+set_from_resource $alt_black  bright_black     #000000
+set_from_resource $white      normal_white     #000000
+set_from_resource $alt_white  bright_white     #000000
+set_from_resource $alt_red    bright_red       #000000
+
+#                       BORDER      BACKGROUND  TEXT    INDICATOR   CHILD_BORDER
+client.focused          $alt_black  $alt_black  $black  $alt_white  $alt_black
+client.unfocused        $bg_soft    $bg_soft    $white  $bg_soft    $bg_soft
+client.focused_inactive $bg_soft    $bg_soft    $white  $bg_soft    $bg_soft
+client.urgent           $alt_red    $alt_red    $black  $alt_red    $alt_red
+client.background       $bg_hard
+
+########## RUN ON STARTUP ##########
+
+### in background
+
+# load Xresourecs file, done in .xinitrc, thus commented here
+# exec_always "xrdb -merge ~/Xresources"
+
+# xrandr initial settings for dual monitor setup
+exec_always "xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate right --output DP-0 --primary --mode 2560x1440 --pos 1080x309 --rotate normal --output DP-1 --off" 
+
+# compositor
+exec_always picom
+
+# notifications
+exec_always dunst
+
+# run polybar
+exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
+
+# setting wallpaper
+exec_always "nitrogen --restore"
+
+# load needed keyboard layouts
+exec_always --no-startup-id "setxkbmap pl,us"
+
+# autotiling
+exec_always --no-startup-id "autotiling"

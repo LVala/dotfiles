@@ -1,0 +1,75 @@
+configuration {
+  modi: "drun,run";
+  font: "JetBrains Mono 10";
+  drun-display-format: "{name}";
+  display-run: "run:";
+  display-drun: "run:";
+}
+
+@theme "/dev/null"
+
+* {
+  bg: #1d2021;
+  bg-alt: #928374;
+
+  fg: #ebdbb2;
+  fg-alt: #a89984;
+
+  background-color: @bg;
+}
+
+window {
+  width: 100%;
+  height: 27px;
+  location: north;
+  anchor: north;
+  children: [horibox];
+}
+
+horibox {
+  orientation: horizontal;
+  children: [inputbar, listview];
+}
+
+inputbar {
+  width: 13em;
+  background-color: @bg-alt;
+  text-color: @fg;
+  padding: 4;
+  orientation: horizontal;
+  children: [prompt, entry];
+}
+
+prompt {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+entry {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+listview {
+  background-color: @bg;
+  padding: 4;
+  spacing: 20;
+  scrollbar: false;
+  layout: horizontal;
+}
+
+element {
+  text-color: @fg-alt;
+}
+
+element selected {
+  text-color: @fg;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+// vim: ft=sass

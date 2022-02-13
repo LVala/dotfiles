@@ -1,0 +1,169 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;   LVala's polybar config
+;
+;==========================================================
+
+[colors]
+background_hard = ${xrdb:background_hard:#000}
+background_soft = ${xrdb:background_soft:#000}
+background_med = ${xrdb:background_med:#000}
+foreground = ${xrdb:foreground:#000}
+black = ${xrdb:normal_black:#000}
+black_alt = ${xrdb:bright_black:#000}
+white = ${xrdb:normal_white:#000}
+white_alt = ${xrdb:bright_white:#000}
+red_alt = ${xrdb:bright_red:#000}
+
+[bar/bar_main]
+monitor = ${env:MONITOR:DP-0}
+width = 100%
+height = 27
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background_hard}
+foreground = ${colors.foreground}
+
+line-size = 0 
+border-size = 0 
+padding = 2
+module-margin = 2 
+
+font-0 = JetBrains Mono:pixelsize=10;3
+font-1 = Noto Sans:pixelsize=10;3
+font-2 = Noto Sans CJK:pixelsize=10;3
+font-3 = Noto Color Emoji:scale=10;3
+font-4 = Symbols Nerd Font:pixelsize=13;4
+font-5 = fixed:pixelsize=10;3
+
+modules-left = i3 
+modules-center = date 
+modules-right = pulseaudio wired-network xkeyboard
+
+tray-position = none 
+
+;wm-restack = i3
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/bar_side]
+inherit = bar/bar_main
+monitor = ${env:MONITOR:HDMI-0}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = "<label-layout>"
+label-layout = " %layout%"
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+index-sort = true
+wrapping-scroll = false
+
+format = "<label-state>"
+
+; focused = Active workspace on focused monitor
+label-focused = "%name%"
+label-focused-padding = 1 
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = ${self.label-focused}
+label-unfocused-foreground = ${colors.black_alt}
+label-unfocused-padding = ${self.label-focused-padding}
+
+; visible = Active workspace on unfocused monitor
+label-visible = ${self.label-focused}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = ${self.label-focused}
+label-urgent-foreground = ${colors.red_alt}
+label-urgent-padding = ${self.label-focused-padding}
+
+[module/wireless-network]
+;TODO
+type = internal/network
+interface = wlp0s20f0u7
+interval = 3.0
+
+format-connected = "<ramp-signal> <label-connected>"
+label-connected = "%essid%"
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/wired-network]
+type = internal/network
+interface = enp2s0
+interval = 3.0
+
+label-connected = " %downspeed%"
+
+label-disconnected = " disconnected"
+label-disconnected-foreground = ${colors.black_alt}
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+date = "%d-%m-%Y"
+date-alt = "%A %d-%m-%Y"
+
+time = "%H:%M"
+time-alt = "%H:%M:%S"
+
+label = "%time% | %date%"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = "<ramp-volume> <label-volume>"
+label-volume = "%percentage%%"
+
+ramp-volume-0 = "奄"
+ramp-volume-1 = "奔"
+ramp-volume-2 = "墳"
+
+label-muted = "婢 muted"
+label-muted-foreground = ${colors.black_alt}
+
+click-right = pavucontrol
+click-middle = helvum
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:set ft=dosini:
