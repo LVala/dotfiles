@@ -1,0 +1,7 @@
+[user]
+	email = lukaszpwala@gmail.com
+	name = Łukasz Wala
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
