@@ -39,9 +39,9 @@ function set_theme
     set -g hydro_color_duration $comment
 
   # fzf
-    # set -gx FZF_DEFAULT_OPTS "
-    #   --color=fg:#cbd9d8,hl:#b97490
-    #   --color=fg+:#e6eaea,bg+:#254147,hl+:#ad5c7c
-    #   --color=info:#688b89,prompt:#fda47f,pointer:#89aeb8
-    #   --color=marker:#a1cdd8,spinner:#8eb2af,header:#8eb2af"
+    set -gx FZF_DEFAULT_OPTS "
+      --color=fg:#cbd9d8,hl:#b97490
+      --color=fg+:#e6eaea,bg+:#254147,hl+:#ad5c7c
+      --color=info:#688b89,prompt:#fda47f,pointer:#89aeb8
+      --color=marker:#a1cdd8,spinner:#8eb2af,header:#8eb2af"
 end

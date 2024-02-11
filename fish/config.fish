@@ -9,18 +9,19 @@ end
 
 # environment
 set -gx EDITOR nvim
+set -gx tang_paths ~/repos/
 
 # aliases
 alias ls='ls --color=auto -Fh'
 alias ll='ls -la'
-alias t='tmuxify'
 
 # bindings
 bind \cF "cd (find $HOME/* -maxdepth 4 -type d -not -path '*/.*' | fzf) && commandline -f repaint"
 
 if status is-interactive
-    set fish_greeting 
+    set fish_greeting
     set_theme
+    set -q TMUX || tang misc
 end
 
 # tool configuration, adding stuff to PATH 
