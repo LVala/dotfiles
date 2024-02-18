@@ -1,21 +1,22 @@
-vim.keymap.set("n", "Q", "<nop>")
+local k = vim.keymap
+k.set("n", "Q", "<nop>")
 
 -- keep the cursor in the middle of the screen
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "N", "Nzz")
+k.set("n", "<C-d>", "<C-d>zz")
+k.set("n", "<C-u>", "<C-u>zz")
+k.set("n", "n", "nzz")
+k.set("n", "N", "Nzz")
 
--- paste/rom/to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
-vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
+-- paste/yank to/from system clipboard
+k.set({"n", "v"}, "<leader>y", [["+y]])
+k.set("n", "<leader>Y", [["+Y]])
+k.set({"n", "v"}, "<leader>p", [["+p]])
+k.set({"n", "v"}, "<leader>P", [["+P]])
+k.set({"n", "v"}, "<leader>d", [["+d]])
 
 -- reselect text that has been indented
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
+k.set("v", "<", "<gv")
+k.set("v", ">", ">gv")
 
 -- highlight yanked text
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
