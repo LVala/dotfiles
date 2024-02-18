@@ -1,0 +1,3 @@
+# fish_variables is cluttered with vars set by plugins
+# and I prefer to do "set -g" in config.fish anyways
+fish_variables
