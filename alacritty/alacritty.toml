@@ -40,15 +40,3 @@ color = "0xff8349"
 [[colors.indexed_colors]]
 index = 17
 color = "0xcb7985"
-
-[[colors.indexed_colors]]
-index = 18
-color = "0x0f1c1e"
-
-[[colors.indexed_colors]]
-index = 19
-color = "0xe6eaea"
-
-[[colors.indexed_colors]]
-index = 20
-color = "0x587b7b"
