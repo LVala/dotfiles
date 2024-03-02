@@ -77,10 +77,6 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
         mapping = {
           ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -106,19 +102,15 @@ return {
     },
     config = function()
       local telescope = require("telescope")
-      telescope.setup({
-        defaults = { layout_strategy = "vertical" },
-        extensions = {
-          ["ui-select"] = require("telescope.themes").get_dropdown()
-        },
-      })
-
+      telescope.setup({ defaults = { layout_strategy = "vertical" } })
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
 
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>f", builtin.find_files)
-      vim.keymap.set("n", "<leader>g", builtin.live_grep)
+      vim.keymap.set("n", "<leader>g", builtin.git_status)
+      vim.keymap.set("n", "<leader>*", builtin.grep_string)
+      vim.keymap.set("n", "<leader>/", builtin.live_grep)
     end,
   },
   {
@@ -151,7 +143,7 @@ return {
       vim.cmd.colorscheme("terafox")
     end,
   },
-  { "lukas-reineke/indent-blankline.nvim", config = true, main = "ibl",  },
+  { "lukas-reineke/indent-blankline.nvim", config = true, main = "ibl" },
   { "numToStr/Comment.nvim",               config = true },
   { "lewis6991/gitsigns.nvim",             config = true },
   { "nmac427/guess-indent.nvim",           config = true },

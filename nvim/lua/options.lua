@@ -6,7 +6,6 @@ o.cursorline = true
 o.hlsearch = false
 o.number = true
 o.scrolloff = 8
--- o.showmode = false
 o.sidescrolloff = 4
 o.signcolumn = "yes"
 o.termguicolors = true
@@ -15,7 +14,8 @@ o.wrap = false
 o.swapfile = false
 o.undofile = true
 
--- TODO listchars
+o.list = true
+o.listchars = { tab = "» ", trail = "•", nbsp = "␣" }
 
 -- indent related options are expected to be set
 -- by guess-indent.nvim, this is just a fallback
