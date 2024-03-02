@@ -18,12 +18,14 @@ k.set({"n", "v"}, "<leader>d", [["+d]])
 k.set("v", "<", "<gv")
 k.set("v", ">", ">gv")
 
--- highlight yanked text
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+-- navigate splits with CTRL+<hjkl>
+k.set("n", "<C-h>", "<C-w><C-h>")
+k.set("n", "<C-j>", "<C-w><C-j>")
+k.set("n", "<C-k>", "<C-w><C-k>")
+k.set("n", "<C-l>", "<C-w><C-l>")
+
+-- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = "*",
+  group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+  callback = function() vim.highlight.on_yank() end,
 })
