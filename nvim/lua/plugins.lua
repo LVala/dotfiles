@@ -105,12 +105,35 @@ return {
       telescope.setup({ defaults = { layout_strategy = "vertical" } })
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
-
+    end,
+    keys = function()
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>f", builtin.find_files)
-      vim.keymap.set("n", "<leader>g", builtin.git_status)
-      vim.keymap.set("n", "<leader>*", builtin.grep_string)
-      vim.keymap.set("n", "<leader>/", builtin.live_grep)
+
+      return {
+        { "<leader>f", builtin.find_files },
+        { "<leader>g", builtin.git_status },
+        { "<leader>*", builtin.grep_string },
+        { "<leader>/", builtin.live_grep },
+        { "<leader>r", builtin.resume },
+      }
+    end,
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
+    keys = function()
+      local harpoon = require("harpoon")
+
+      return {
+        { "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end },
+        { "<leader>a", function() harpoon:list():append() end },
+        { "<C-j>",     function() harpoon:list():select(1) end },
+        { "<C-k>",     function() harpoon:list():select(2) end },
+        { "<C-l>",     function() harpoon:list():select(3) end },
+        { "<C-;>",     function() harpoon:list():select(4) end },
+      }
     end,
   },
   {

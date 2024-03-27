@@ -8,21 +8,15 @@ k.set("n", "n", "nzz")
 k.set("n", "N", "Nzz")
 
 -- paste/yank to/from system clipboard
-k.set({"n", "v"}, "<leader>y", [["+y]])
+k.set({ "n", "v" }, "<leader>y", [["+y]])
 k.set("n", "<leader>Y", [["+Y]])
-k.set({"n", "v"}, "<leader>p", [["+p]])
-k.set({"n", "v"}, "<leader>P", [["+P]])
-k.set({"n", "v"}, "<leader>d", [["+d]])
+k.set({ "n", "v" }, "<leader>p", [["+p]])
+k.set({ "n", "v" }, "<leader>P", [["+P]])
+k.set({ "n", "v" }, "<leader>d", [["+d]])
 
 -- reselect text that has been indented
 k.set("v", "<", "<gv")
 k.set("v", ">", ">gv")
-
--- navigate splits with CTRL+<hjkl>
-k.set("n", "<C-h>", "<C-w><C-h>")
-k.set("n", "<C-j>", "<C-w><C-j>")
-k.set("n", "<C-k>", "<C-w><C-k>")
-k.set("n", "<C-l>", "<C-w><C-l>")
 
 -- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
