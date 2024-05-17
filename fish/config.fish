@@ -8,5 +8,5 @@ if status is-interactive
 
     # in TTY or already in tmux? don't run tang
     string match -q '/dev/tty*' (tty)
-    or set -q TMUX || tang -e misc
+    or set -q TMUX || tang misc
 end
