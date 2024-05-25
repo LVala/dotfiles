@@ -1,6 +1,8 @@
 set -gx EDITOR nvim
 set -gx tang_paths ~/repos/
 
+fish_add_path ~/bin
+
 if status is-interactive
     set fish_greeting
 
