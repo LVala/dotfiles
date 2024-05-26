@@ -1,5 +1,17 @@
 return {
   {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("terafox")
+    end,
+  },
+  { "lukas-reineke/indent-blankline.nvim", config = true, main = "ibl" },
+  { "numToStr/Comment.nvim",               config = true },
+  { "lewis6991/gitsigns.nvim",             config = true },
+  { "nmac427/guess-indent.nvim",           config = true },
+  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
@@ -35,9 +47,9 @@ return {
           map("go", builtin.lsp_type_definitions)
           map("gl", vim.diagnostic.open_float)
           map("<leader>ws", builtin.lsp_dynamic_workspace_symbols)
-          map("<leader>rn", vim.lsp.buf.rename)
+          map("<leader>cr", vim.lsp.buf.rename)
           map("<leader>ca", vim.lsp.buf.code_action)
-          map("<leader>bf", vim.lsp.buf.format)
+          map("<leader>cf", vim.lsp.buf.format)
           map("K", vim.lsp.buf.hover)
         end,
       })
@@ -78,9 +90,8 @@ return {
           end,
         },
         mapping = {
-          ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<Tab>"] = cmp.mapping.select_next_item(),
+          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
           ["<C-Space>"] = cmp.mapping.complete(),
         },
         sources = {
@@ -112,27 +123,10 @@ return {
       return {
         { "<leader>f", builtin.find_files },
         { "<leader>g", builtin.git_status },
+        { "<leader>b", builtin.buffers },
         { "<leader>*", builtin.grep_string },
         { "<leader>/", builtin.live_grep },
         { "<leader>r", builtin.resume },
-      }
-    end,
-  },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = true,
-    keys = function()
-      local harpoon = require("harpoon")
-
-      return {
-        { "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end },
-        { "<leader>a", function() harpoon:list():append() end },
-        { "<C-j>",     function() harpoon:list():select(1) end },
-        { "<C-k>",     function() harpoon:list():select(2) end },
-        { "<C-l>",     function() harpoon:list():select(3) end },
-        { "<C-;>",     function() harpoon:list():select(4) end },
       }
     end,
   },
@@ -147,11 +141,11 @@ return {
       },
       sections = {
         lualine_a = {},
-        lualine_b = {
-          { "filetype", icon_only = true },
+        lualine_b = { "branch" },
+        lualine_c = {
+          { "filetype", icon_only = true, padding = { left = 1, right = 0 } },
           { "filename", path = 4 },
         },
-        lualine_c = { "branch" },
         lualine_x = { "diagnostics" },
         lualine_y = { "progress" },
         lualine_z = {},
@@ -159,15 +153,30 @@ return {
     },
   },
   {
-    "EdenEast/nightfox.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("terafox")
-    end,
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      disable_netrw = true,
+      hijack_netrw = true,
+      view = {
+        float = {
+          enable = true,
+          open_win_config = function()
+            return {
+              border = "rounded",
+              relative = "editor",
+              row = 2,
+              col = 4,
+              width = 50,
+              height = math.floor(vim.opt.lines:get() * 0.8)
+            }
+          end,
+        },
+      },
+    },
+    keys = {
+      { "<leader>t", "<cmd>NvimTreeToggle<cr>" },
+      { "<Esc>",     "<cmd>NvimTreeClose<cr>" }
+    },
   },
-  { "lukas-reineke/indent-blankline.nvim", config = true, main = "ibl" },
-  { "numToStr/Comment.nvim",               config = true },
-  { "lewis6991/gitsigns.nvim",             config = true },
-  { "nmac427/guess-indent.nvim",           config = true },
 }
