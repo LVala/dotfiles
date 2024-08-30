@@ -2,11 +2,11 @@ import = [ "~/.config/alacritty/terafox.toml" ]
 
 [window]
 padding = { x = 7, y = 7}
-opacity = 0.95
+decorations = "Buttonless"
 
 [scrolling]
 history = 100000
 
 [font]
 normal = { family = "JetBrainsMono NF" }
-size = 11
+size = 14
