@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local o = vim.opt
+o.completeopt = "menuone,noselect"
 o.cursorline = true
 o.hlsearch = false
 o.number = true
@@ -18,7 +19,7 @@ o.list = true
 o.listchars = { tab = "» ", trail = "•", nbsp = "␣" }
 
 -- indent related options are expected to be set
--- by guess-indent.nvim, this is just a fallback
+-- by vim-sleuth, this is just a fallback
 o.shiftround = true
 o.shiftwidth = 2
 o.tabstop = 3
