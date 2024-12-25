@@ -14,7 +14,13 @@ return {
       end,
     })
 
-    mini_files.setup()
+    mini_files.setup({
+      mappings = {
+        go_in = "L",
+        go_in_plus = "l",
+      },
+    })
+
     vim.keymap.set("n", "<leader>t", function()
       if not mini_files.close() then mini_files.open() end
     end)
