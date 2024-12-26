@@ -1,8 +1,8 @@
-set -g @fg "#e6eaea";
-set -g @bg "#0f1c1e";
-set -g @muted "#587b7b";
-set -g @red "#ad5c7c";
-set -g @green "#7aa4a1";
+set -g @fg "#deeeed"
+set -g @bg "#242424"
+set -g @muted "#7a7a7a"
+set -g @blue "#7788aa"
+set -g @lack "#708090"
 
 set -g status on
 set -g status-style "fg=#{@fg},bg=#{@bg}"
@@ -15,8 +15,8 @@ set -g window-status-format " #I:#W#F"
 set -g window-status-current-style "fg=#{@fg},bg=#{@bg}"
 set -g window-status-current-format " #I:#W#F"
 
-set -g status-left-style "fg=#{@bg},bg=#{@green},bold"
+set -g status-left-style "fg=#{@bg},bg=#{@lack},bold"
 set -g status-left " #S "
 
-set -g status-right-style "fg=#{@bg},bg=#{@red},bold"
+set -g status-right-style "fg=#{@bg},bg=#{@blue},bold"
 set -g status-right "#{?client_prefix, PREFIX ,}"

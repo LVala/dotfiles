@@ -17,7 +17,7 @@ return {
 
     local opts = {
       tweak_syntax = {
-        comment = lackluster.color.gray4,
+        comment = lackluster.color.gray5,
       },
       tweak_background = {
         normal = "none",

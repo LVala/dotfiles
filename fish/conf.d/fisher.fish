@@ -1,4 +1,5 @@
 # fisher install all of the plugins to ~/.config/fish/ by default
+# this changes it to $__fish_user_data_dir, in order not to pollute the config directory
 set -gx fisher_path $__fish_user_data_dir
 
 set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_function_path[2..-1]

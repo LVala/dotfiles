@@ -2,14 +2,19 @@ return {
   "tpope/vim-sleuth",
   {
     "nvimdev/indentmini.nvim",
-    config = true
+    config = true,
   },
-  { "echasnovski/mini.surround",
+  {
+    "echasnovski/mini.surround",
     config = true,
   },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
+  },
+  {
+    "brenoprata10/nvim-highlight-colors",
     config = true,
   }
 }

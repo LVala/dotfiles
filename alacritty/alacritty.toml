@@ -1,8 +1,11 @@
-import = [ "~/.config/alacritty/terafox.toml" ]
+[general]
+import = [ "~/.config/alacritty/theme.toml" ]
 
 [window]
 padding = { x = 7, y = 7}
 decorations = "Buttonless"
+blur = true
+opacity = 0.85
 
 [scrolling]
 history = 100000
