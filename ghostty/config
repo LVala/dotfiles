@@ -1,0 +1,27 @@
+font-size = 15
+font-family = Iosevka Fixed
+
+macos-titlebar-style = tabs
+background-opacity = 0.85
+background-blur-radius = 30
+
+foreground = #DEEEED
+background = #0A0A0A
+cursor-color = #DEEEED
+
+palette = 0=#080808
+palette = 8=#444444
+palette = 1=#D70000
+palette = 9=#D70000
+palette = 2=#789978
+palette = 10=#789978
+palette = 3=#ffAA88
+palette = 11=#ffAA88
+palette = 4=#7788AA
+palette = 12=#7788AA
+palette = 5=#D7007D
+palette = 13=#D7007D
+palette = 6=#708090
+palette = 14=#708090
+palette = 7=#DEEEED
+palette = 15=#DEEEED
