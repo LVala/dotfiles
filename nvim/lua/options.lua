@@ -1,9 +1,11 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.have_nerd_font = true
 
 local o = vim.opt
 
 o.cursorline = true
+o.number = true
 o.relativenumber = true
 o.scrolloff = 8
 o.sidescrolloff = 4
@@ -29,3 +31,5 @@ o.tabstop = 3
 
 -- set by vim-sleuth, this is just a fallback
 o.shiftwidth = 2
+
+o.winborder = "rounded"

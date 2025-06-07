@@ -6,8 +6,8 @@ return {
     sections = {
       lualine_a = { "branch" },
       lualine_b = {},
-      lualine_c = { "filename" },
-      lualine_x = { "diagnostics", "location" },
+      lualine_c = { { "filename", path = 1 } },
+      lualine_x = { "diagnostics", "progress", "location" },
       lualine_y = {},
       lualine_z = {},
     },

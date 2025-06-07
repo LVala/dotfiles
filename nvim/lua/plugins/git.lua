@@ -23,7 +23,6 @@ return {
       end)
       map("<leader>hb", function() gitsigns.blame_line({ full = true }) end)
       map("<leader>hs", gitsigns.stage_hunk)
-      map("<leader>hu", gitsigns.undo_stage_hunk)
       map("<leader>hr", gitsigns.reset_hunk)
       map("<leader>hp", gitsigns.preview_hunk)
     end,
