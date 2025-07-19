@@ -5,12 +5,6 @@ if status is-interactive
       --color=info:#708090,prompt:#deeeed,pointer:#deeeed
       --color=marker:#dddddd,spinner:#708090,header:#deeeed"
 
-    set -g hydro_color_pwd 708090
-    set -g hydro_color_git 7a7a7a
-    set -g hydro_color_error ffaa88
-    set -g hydro_color_prompt deeeed
-    set -g hydro_color_duration 7a7a7a
-
     set -gx fish_color_end 7a7a7a
     set -gx fish_color_error ffaa88
     set -gx fish_color_quote 708090
