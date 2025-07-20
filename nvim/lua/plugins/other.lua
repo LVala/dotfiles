@@ -1,10 +1,6 @@
 return {
   "tpope/vim-sleuth",
   {
-    "nvimdev/indentmini.nvim",
-    config = true,
-  },
-  {
     "echasnovski/mini.surround",
     config = true,
   },

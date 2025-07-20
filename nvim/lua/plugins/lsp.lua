@@ -1,7 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "ibhagwan/fzf-lua",
+    "folke/snacks.nvim",
     {
       "folke/lazydev.nvim",
       ft = "lua",
@@ -30,20 +30,19 @@ return {
           vim.keymap.set("n", k, f, { buffer = event.buf })
         end
 
-        local fzf = require("fzf-lua")
-        map("grr", fzf.lsp_references)
-        map("gri", fzf.lsp_implementations)
-        map("gO", fzf.lsp_document_symbols)
-        map("gra", fzf.lsp_code_actions)
+        local picker = require("snacks").picker
+        map("grr", picker.lsp_references)
+        map("gri", picker.lsp_implementations)
+        map("gO", picker.lsp_symbols)
 
-        map("gd", fzf.lsp_definitions)
-        map("gD", fzf.lsp_declarations)
-        map("grt", fzf.lsp_typedefs)
-        map("gwO", fzf.lsp_workspace_symbols)
+        map("gd", picker.lsp_definitions)
+        map("gD", picker.lsp_declarations)
+        map("grt", picker.lsp_type_definitions)
+        map("gwO", picker.lsp_workspace_symbols)
         map("grf", vim.lsp.buf.format)
 
         map("gl", vim.diagnostic.open_float)
-        map("grl", fzf.diagnostics_document)
+        map("grl", picker.diagnostics_buffer)
 
         local signs = { ERROR = "󰅚 ", WARN = "󰀪 ", HINT = "󰌶 ", INFO = "󰋽 " }
         vim.diagnostic.config({
