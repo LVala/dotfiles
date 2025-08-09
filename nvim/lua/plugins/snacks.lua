@@ -14,7 +14,7 @@ return {
     local picker = require("snacks").picker
 
     return {
-      { "<leader>f", picker.smart },
+      { "<leader>f", picker.files },
       { "<leader>g", picker.git_status },
       { "<leader>b", picker.buffers },
       { "<leader>*", picker.grep_word },

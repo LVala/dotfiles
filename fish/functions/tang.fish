@@ -19,6 +19,7 @@ function tang
 end
 
 function _tang_get_names
+    # TODO: dots in the path are not handled properly
     for path in $argv
         set -l name (path basename $path)
         set names $names $name

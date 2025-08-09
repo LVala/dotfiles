@@ -4,12 +4,12 @@ return {
   opts = {
     options = { component_separators = "", section_separators = "" },
     sections = {
-      lualine_a = { "branch" },
-      lualine_b = {},
+      lualine_a = { "mode" },
+      lualine_b = { "branch", "diff" },
       lualine_c = { { "filename", path = 1 } },
-      lualine_x = { "diagnostics", "progress", "location" },
-      lualine_y = {},
-      lualine_z = {},
+      lualine_x = { "diagnostics" },
+      lualine_y = { "progress" },
+      lualine_z = { "location" },
     },
   },
 }

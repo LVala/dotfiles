@@ -4,6 +4,7 @@ vim.g.have_nerd_font = true
 
 local o = vim.opt
 
+o.showmode = false
 o.cursorline = true
 o.number = true
 o.relativenumber = true
