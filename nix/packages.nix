@@ -1,7 +1,10 @@
 {
   nix = pkgs: with pkgs; [
     git
+    delta
     neovim
+	 # blame = delta
+	 # TODO mouse scrolling
     fish
     tmux
     fzf
