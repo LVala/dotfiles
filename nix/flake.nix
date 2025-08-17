@@ -7,8 +7,6 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
-    packages = import ./packages.nix;
-    defaults = import ./defaults.nix;
     thisFlake = "/Users/lukasz/repos/dotfiles/nix";
     configuration = { pkgs, ... }: {
       nix = {
@@ -24,7 +22,6 @@
       };
 
       environment = {
-        systemPackages = packages.nix pkgs;
         shells = [ pkgs.fish ];
         shellInit = ''
           eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -36,17 +33,40 @@
         variables = {
           EDITOR = "nvim";
         };
+        systemPackages = with pkgs; [
+          git
+          delta
+          neovim
+          fish
+          tmux
+          fzf
+          ripgrep
+          atuin
+          starship
+        ];
       };
 
       homebrew = {
         enable = true;
-        casks = packages.casks;
         global.autoUpdate = false;
         onActivation = {
           autoUpdate = false;
           upgrade = true;
           cleanup = "zap";
         };
+        casks = [
+          "anki"
+          "calibre"
+          "discord"
+          "docker-desktop"
+          "ungoogled-chromium"
+          "ghostty"
+          "obsidian"
+          "signal"
+          "spotify"
+          "whatsapp"
+          "zoom"
+        ];
       };
 
       programs.fish.enable = true;
@@ -63,7 +83,7 @@
         keyboard.enableKeyMapping = true;
         keyboard.remapCapsLockToEscape = true;
 
-        defaults = defaults;
+        defaults = import ./defaults.nix;
       };
 
       networking.computerName = "Łukasz's MacBook Pro";
