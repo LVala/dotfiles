@@ -5,6 +5,8 @@ macos-titlebar-style = tabs
 background-opacity = 0.90
 background-blur-radius = 30
 
+confirm-close-surface = false
+
 palette = 0=#000000
 palette = 1=#c4746e
 palette = 2=#8a9a7b
