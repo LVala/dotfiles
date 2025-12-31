@@ -4,11 +4,8 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    picker = { enabled = true },
-    indent = {
-      enabled = true,
-      scope = { enabled = false },
-    },
+    picker = {},
+    indent = {},
   },
   keys = function()
     local picker = require("snacks").picker
