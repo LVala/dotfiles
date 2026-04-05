@@ -29,3 +29,5 @@ foreground = #c5c9c7
 cursor-color = #c5c9c7
 selection-background = #22262D
 selection-foreground = #c5c9c7
+
+# Add trailing cursor effect?

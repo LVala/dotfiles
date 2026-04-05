@@ -9,7 +9,7 @@ function tang
     or set -l dir (pwd)
 
     tmux has-session -t=$name 2>/dev/null || begin
-        tmux new-session -ds $name -c $dir -n editor "fish -C $EDITOR"
+        tmux new-session -ds $name -c $dir -n $EDITOR "fish -C $EDITOR"
         tmux new-window -dat "$name:" -c $dir
     end
 
