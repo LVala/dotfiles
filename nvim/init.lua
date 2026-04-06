@@ -171,7 +171,6 @@ require("lualine").setup({
 })
 
 -- treesitter
--- TODO: update to `main` treesitter
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
@@ -182,11 +181,13 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end
 })
 
-vim.pack.add({{src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master"}})
-require("nvim-treesitter.configs").setup({
+vim.pack.add({
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main"},
+  "https://github.com/MeanderingProgrammer/treesitter-modules.nvim",
+})
+require("treesitter-modules").setup({
   auto_install = true,
   highlight = { enable = true },
-  incremental_selection = { enable = true },
   indent = { enable = true },
 })
 

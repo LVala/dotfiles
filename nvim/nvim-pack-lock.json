@@ -14,7 +14,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "07ff073b84d3ef48f286529c36658a65d1a64707",
+      "rev": "db486b42299b2e3f5831809617af21becf268a39",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "kanso.nvim": {
@@ -42,9 +42,9 @@
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "cf12346a3414fa1b06af75c79faebe7f76df080a",
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": "'master'"
+      "version": "'main'"
     },
     "nvim-web-devicons": {
       "rev": "40e9d5a6cc3db11b309e39593fc7ac03bb844e38",
@@ -53,6 +53,10 @@
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "treesitter-modules.nvim": {
+      "rev": "dbded29dade0ff4435642530ec2b5a81730f8e1a",
+      "src": "https://github.com/MeanderingProgrammer/treesitter-modules.nvim"
     },
     "vim-sleuth": {
       "rev": "be69bff86754b1aa5adcbb527d7fcd1635a84080",
