@@ -63,6 +63,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 ----- PLUGINS ------
+vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nvim.difftool")
+
 -- dependencies, plugins without setup
 vim.pack.add({
   "https://github.com/nvim-tree/nvim-web-devicons",
